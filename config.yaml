@@ -1,0 +1,78 @@
+experiment: GAI-002
+mode: full
+device: cpu
+threads: 4
+pin_to_performance_cores: true
+process_priority: high
+model:
+  sizes: [64, 256, 256, 10]
+data:
+  name: gaussian_mixture
+  dim: 64
+  classes: 10
+  n_train: 8192
+  n_val: 2048
+  separation: 0.35
+  seed: 2026
+secondary_data:
+  name: sklearn_digits
+  n_val: 360
+  split_seed: 2026
+updates_per_run: 500
+batch: 128
+blocks: 5
+configurations:
+  - {id: C1, optimizer: sgd, lr: 0.05, precision: float32}
+  - {id: C2, optimizer: momentum, lr: 0.025, mu: 0.5, precision: float32}
+  - {id: C3, optimizer: momentum, lr: 0.005, mu: 0.9, precision: float32}
+  - {id: C4, optimizer: momentum, lr: 0.0005, mu: 0.99, precision: float32}
+  - {id: C5, optimizer: adam, lr: 0.001, precision: float32}
+  - {id: C6, optimizer: reversible_momentum, lr: 0.005, mu_num: 9, mu_den: 10, precision: float32}
+ablations:
+  blocks: 2
+  configurations:
+    - {id: A1, optimizer: sgd, lr: 0.05, precision: float64, role: ablation}
+    - {id: A2, optimizer: momentum, lr: 0.005, mu: 0.9, precision: float64, role: ablation}
+    - {id: A3, optimizer: momentum, lr: 0.005, mu: 0.9, precision: float32, checkpoint: true, role: ablation}
+    - {id: C3, optimizer: momentum, lr: 0.005, mu: 0.9, precision: float32, role: ablation_reference}
+measurement:
+  warmup_seconds: 120
+  idle_seconds: 10
+  reference_windows: 3
+  reference_seconds: 3
+  window_seconds: 6
+  windows_per_cell: 2
+  validation:
+    probe_seconds: 3.0
+    idle_window_seconds: 2.0
+    idle_windows: 5
+    load_seconds: 5.0
+    min_plausible_w: 0.5
+    max_plausible_w: 400.0
+    min_load_response_w: 1.0
+stability:
+  max_reference_cv: 0.10
+  max_median_foreign_cores: 10.0
+accounting:
+  sample_every: 25
+  sample_elements: 2048
+  window: 0
+temperature:
+  kelvin: 298.15
+  uncertainty_k: 5.0
+  source: DECLARED_REFERENCE
+statistics:
+  bootstrap: 10000
+  seed: 20261117
+  equivalence_margin: 0.2
+  refute_r: 0.5
+  landauer_supported_log10: 6.0
+  landauer_refuted_log10: 3.0
+  conventions_supported_ratio: 100.0
+criterion:
+  statistic: partial_r
+  op: within
+  threshold: 0.2
+energy:
+  boundary: CPU package energy (RAPL via the Windows Energy Meter Interface or Linux sysfs), excluding DRAM, storage, display, network and power conversion.
+  requires_measured: true

@@ -1,0 +1,31 @@
+Traceback (most recent call last):
+  File ".\src\landauergap\backends\__init__.py", line 16, in open_backend
+    backend = RaplBackend(validation)
+  File ".\src\landauergap\backends\rapl.py", line 18, in __init__
+    raise RuntimeError("no validated CPU energy counter: " + "; ".join(self.report.reasons))
+RuntimeError: no validated CPU energy counter: load raised power by only 19.73 W; the sensor does not resolve work
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File ".\src\landauergap\cli.py", line 107, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File ".\src\landauergap\cli.py", line 103, in main
+    return args.fn(args)
+           ~~~~~~~^^^^^^
+  File ".\src\landauergap\cli.py", line 38, in cmd_session
+    run_session(cfg, out)
+    ~~~~~~~~~~~^^^^^^^^^^
+  File ".\src\landauergap\measurement.py", line 134, in run_session
+    session = Session(cfg, out, backend)
+  File ".\src\landauergap\measurement.py", line 56, in __init__
+    self.backend, self.backend_info = (backend, backend.describe()) if backend else open_backend(
+                                                                                    ~~~~~~~~~~~~^
+        cfg["measurement"]["validation"], require_measured=bool(cfg["energy"].get("requires_measured")))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ".\src\landauergap\backends\__init__.py", line 20, in open_backend
+    raise RuntimeError(f"direct CPU energy is required but unavailable: {error}") from error
+RuntimeError: direct CPU energy is required but unavailable: no validated CPU energy counter: load raised power by only 19.73 W; the sensor does not resolve work

@@ -1,0 +1,59 @@
+id: GAI-002
+title: "Logical Irreversibility in Gradient-Based Training: Exact Accounting of Information Loss and Its Relation to CPU Energy"
+authors: Dhadi Sai Praneeth Reddy
+repository: https://github.com/dspraneeth07/logical-irreversibility-training
+preregistration:
+  sha256: 56867144e8a3611588225dd86c0ff79235f349f1df589afe0ffacadd86dca591
+  frozen_at: '2026-11-17'
+  files: [PREREGISTRATION.md, config.yaml]
+# the original experiment record follows
+record:
+  experiment_id: GAI-002
+  id: GAI-002
+  codename: LandauerGap
+  slug: GAI-002
+  construct: Landauer Gap Ratio
+  expression: Gamma = E_measured / (N_erase k_B T ln 2)
+  class: Index
+  priority: P1
+  status: COMPLETE
+  question: Does the logical information a learning update erases predict the energy a real CPU spends on it, once bytes, FLOPs
+    and runtime are accounted for?
+  claim_type: EMPIRICAL_TEST
+  novelty_status: documented_comparison
+  preregistration:
+    sha256: 56867144e8a3611588225dd86c0ff79235f349f1df589afe0ffacadd86dca591
+    frozen_at: '2026-11-17'
+  energy:
+    default_source_tag: measured_windows_emi_rapl_pkg
+    fallback_source_tag: NOT_MEASURED
+    requires_measured: true
+  release:
+    tag: null
+    doi: null
+  colab: https://github.com/dspraneeth07/logical-irreversibility-training
+  license:
+    code: Apache-2.0
+    documents: CC-BY-4.0
+  program:
+    name: the research programme
+    title: Thermodynamic Accounting of General Intelligence
+    repository: dspraneeth07/the research programme
+  title: 'LandauerGap: logical information loss in learning updates and measured CPU energy'
+  sessions:
+  - session: cpu-session-1
+    date: '2026-11-17'
+    status: COMPLETE
+    verdict: ambiguous
+    hypothesis_verdicts:
+      H2: AMBIGUOUS
+      H2b: REPORTED
+      H3: SUPPORTED
+      H4: SUPPORTED
+      H5: SUPPORTED
+      H6: SUPPORTED
+    energy_source: measured_windows_emi_rapl_pkg
+    reference_cv: 0.03473318112554552
+    commit: 9ae9a24be20389d55ff3af640710c1767a06cd28
+    raw_windows_sha256: 1b71898d038e5f771efb639a81bcc59ae224f8a1930be9222ad25da14fee7c61
+  primary_session: results/cpu-session-1

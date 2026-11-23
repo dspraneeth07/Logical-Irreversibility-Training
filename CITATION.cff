@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this code or these results, please cite the paper."
+title: "Logical Irreversibility in Gradient-Based Training: Exact Accounting of Information Loss and Its Relation to CPU Energy"
+type: software
+authors:
+  - given-names: Dhadi Sai Praneeth
+    family-names: Reddy
+    email: dspraneeth07@gmail.com
+    affiliation: "Department of Computer Science and Engineering, Vasavi College of Engineering (Autonomous), Hyderabad, India"
+    orcid: "https://orcid.org/0009-0002-1272-4666"
+repository-code: "https://github.com/dspraneeth07/logical-irreversibility-training"
+license: Apache-2.0
+keywords:
+  - Landauer's principle
+  - logical reversibility
+  - information erasure
+  - floating-point arithmetic
+  - optimizers
+  - energy measurement
+  - reversible computing
+  - preregistration

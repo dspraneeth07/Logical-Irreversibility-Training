@@ -1,0 +1,389 @@
+{
+  "configuration": "A2",
+  "family": "momentum_0.9",
+  "seed": 100,
+  "steps": 500,
+  "sampled_steps": 20,
+  "parameters": 85002,
+  "M1_write_bits_per_update": {
+    "value": 25315200.0,
+    "unit": "bit",
+    "level": "WRITE_EVENT_COUNT",
+    "method": "sum of elements written times their width",
+    "ci_low": null,
+    "ci_high": null,
+    "assumptions": [
+      "every written bit counted once; says nothing about recoverability"
+    ]
+  },
+  "M2_information_bits_per_update": {
+    "value": 62748.81122428214,
+    "unit": "bit",
+    "level": "INFORMATION_ERASURE_ESTIMATE",
+    "method": "mean over sampled steps of the per-step preimage estimate (M2)",
+    "ci_low": 58591.69892575893,
+    "ci_high": 67034.1422991952,
+    "assumptions": [
+      "data set and batch schedule retained"
+    ]
+  },
+  "M3_upper_bound_bits_per_update": {
+    "value": 63695.2105936667,
+    "unit": "bit",
+    "level": "UPPER_BOUND",
+    "method": "M2 + log2 C(n, batch) for the discarded batch choice",
+    "choice_bits": 946.3993693845634
+  },
+  "one_step_exact_fraction": 0.7708539210842098,
+  "one_step_max_error_ulp": 2796202,
+  "fixed_point_without_history_bits_per_update": null,
+  "landauer_bound_per_update": {
+    "value": 1.7903958393082452e-16,
+    "unit": "J",
+    "level": "LANDAUER_BOUND_ESTIMATE",
+    "method": "N_erase k_B T ln 2 (Landauer 1961), with N_erase from an information estimate",
+    "ci_low": 1.643746091779813e-16,
+    "ci_high": 1.9447436999511563e-16,
+    "assumptions": [
+      "quasi-static erasure into a single bath at temperature T",
+      "N_erase counts logical bits lost under the declared state model",
+      "T = 298.15 K +- 5.0 K (DECLARED_REFERENCE)"
+    ]
+  },
+  "final_validation_accuracy": 0.82958984375,
+  "per_step": [
+    {
+      "step": 24,
+      "information_bits": 48447.228966634444,
+      "information_ci": [
+        44945.05968278586,
+        52126.247489561334
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 135082,
+        "exact_fraction": 0.7945813039693184,
+        "max_error_ulp": 36409,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    },
+    {
+      "step": 49,
+      "information_bits": 52843.67743928318,
+      "information_ci": [
+        48992.100335847936,
+        56887.0973267513
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 132692,
+        "exact_fraction": 0.7805228112279711,
+        "max_error_ulp": 16384,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    },
+    {
+      "step": 74,
+      "information_bits": 60128.53241285878,
+      "information_ci": [
+        56060.48700366326,
+        64477.33869390913
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 133147,
+        "exact_fraction": 0.7831992188419096,
+        "max_error_ulp": 15218,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    },
+    {
+      "step": 99,
+      "information_bits": 59680.179654220155,
+      "information_ci": [
+        55676.87134263076,
+        63862.25995955222
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 129408,
+        "exact_fraction": 0.7612056186913249,
+        "max_error_ulp": 28217,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    },
+    {
+      "step": 124,
+      "information_bits": 65876.98605545495,
+      "information_ci": [
+        61544.646514110595,
+        70353.38623770408
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 131538,
+        "exact_fraction": 0.7737347356532788,
+        "max_error_ulp": 29127,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    },
+    {
+      "step": 149,
+      "information_bits": 61834.867395139416,
+      "information_ci": [
+        57463.209414149314,
+        66110.64459721028
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 130484,
+        "exact_fraction": 0.7675348815321993,
+        "max_error_ulp": 34588,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    },
+    {
+      "step": 174,
+      "information_bits": 61314.64278061465,
+      "information_ci": [
+        57381.91933155575,
+        65394.993356664534
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 132404,
+        "exact_fraction": 0.7788287334415661,
+        "max_error_ulp": 19114,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    },
+    {
+      "step": 199,
+      "information_bits": 64776.54548699189,
+      "information_ci": [
+        60334.099406106085,
+        69150.85420910885
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 125406,
+        "exact_fraction": 0.7376649961177384,
+        "max_error_ulp": 12743,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    },
+    {
+      "step": 224,
+      "information_bits": 68168.33361082962,
+      "information_ci": [
+        63693.24629413984,
+        72786.10505477728
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 126007,
+        "exact_fraction": 0.7412002070539516,
+        "max_error_ulp": 11378,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    },
+    {
+      "step": 249,
+      "information_bits": 57983.66064451607,
+      "information_ci": [
+        54121.97326877776,
+        61954.24237672112
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 137711,
+        "exact_fraction": 0.8100456459848003,
+        "max_error_ulp": 40960,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    },
+    {
+      "step": 274,
+      "information_bits": 59116.76155144693,
+      "information_ci": [
+        55167.2488937543,
+        63270.912082202056
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 126937,
+        "exact_fraction": 0.7466706665725512,
+        "max_error_ulp": 15474,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    },
+    {
+      "step": 299,
+      "information_bits": 62639.581684887875,
+      "information_ci": [
+        58755.34316716475,
+        66578.1879518059
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 137217,
+        "exact_fraction": 0.8071398320039529,
+        "max_error_ulp": 47331,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    },
+    {
+      "step": 324,
+      "information_bits": 62454.84219951827,
+      "information_ci": [
+        58517.484358784306,
+        66588.91589588436
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 131871,
+        "exact_fraction": 0.7756935130938095,
+        "max_error_ulp": 21845,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    },
+    {
+      "step": 349,
+      "information_bits": 70330.90752242842,
+      "information_ci": [
+        65778.00073362113,
+        75115.77279823764
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 126812,
+        "exact_fraction": 0.7459353897555352,
+        "max_error_ulp": 20935,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    },
+    {
+      "step": 374,
+      "information_bits": 66238.42662407101,
+      "information_ci": [
+        61897.453222081596,
+        70932.90638679326
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 134001,
+        "exact_fraction": 0.7882226300557634,
+        "max_error_ulp": 29127,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    },
+    {
+      "step": 399,
+      "information_bits": 64394.52209648978,
+      "information_ci": [
+        60130.46320739216,
+        68654.08344429768
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 130377,
+        "exact_fraction": 0.7669054845768335,
+        "max_error_ulp": 2796202,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    },
+    {
+      "step": 424,
+      "information_bits": 68412.1550459597,
+      "information_ci": [
+        64043.72923545981,
+        73016.83829366682
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 130671,
+        "exact_fraction": 0.7686348556504553,
+        "max_error_ulp": 29127,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    },
+    {
+      "step": 449,
+      "information_bits": 67407.7874352947,
+      "information_ci": [
+        63187.7077771162,
+        71631.96519258969
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 132423,
+        "exact_fraction": 0.7789404955177526,
+        "max_error_ulp": 203890,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    },
+    {
+      "step": 474,
+      "information_bits": 63088.98538347364,
+      "information_ci": [
+        58773.960767368706,
+        67279.90749961688
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 124601,
+        "exact_fraction": 0.7329298134161549,
+        "max_error_ulp": 11378,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    },
+    {
+      "step": 499,
+      "information_bits": 69837.60049552932,
+      "information_ci": [
+        65368.9745586685,
+        74510.18713684972
+      ],
+      "recoverability": {
+        "elements": 170004,
+        "exact_elements": 132176,
+        "exact_fraction": 0.7774875885273288,
+        "max_error_ulp": 14564,
+        "level": "STATE_RECOVERABILITY_ANALYSIS"
+      },
+      "notes": []
+    }
+  ],
+  "full_reversal": {
+    "elements": 170004,
+    "exact_elements": 0,
+    "exact_fraction": 0.0,
+    "max_error_ulp": 9223370465964691798,
+    "level": "STATE_RECOVERABILITY_ANALYSIS",
+    "completed": true,
+    "max_abs_error": 193678696.90287587,
+    "diverged": false,
+    "diverged_after_reverse_steps": null
+  },
+  "persistent_state_bytes_after_run": 1360032,
+  "role": "ablation"
+}

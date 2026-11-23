@@ -1,0 +1,418 @@
+{
+  "started_utc": "2026-11-17T09:04:11+00:00",
+  "config": {
+    "experiment": "GAI-002",
+    "mode": "full",
+    "device": "cpu",
+    "threads": 4,
+    "pin_to_performance_cores": true,
+    "process_priority": "high",
+    "model": {
+      "sizes": [
+        64,
+        256,
+        256,
+        10
+      ]
+    },
+    "data": {
+      "name": "gaussian_mixture",
+      "dim": 64,
+      "classes": 10,
+      "n_train": 8192,
+      "n_val": 2048,
+      "separation": 0.35,
+      "seed": 2026
+    },
+    "secondary_data": {
+      "name": "sklearn_digits",
+      "n_val": 360,
+      "split_seed": 2026
+    },
+    "updates_per_run": 500,
+    "batch": 128,
+    "blocks": 5,
+    "configurations": [
+      {
+        "id": "C1",
+        "optimizer": "sgd",
+        "lr": 0.05,
+        "precision": "float32"
+      },
+      {
+        "id": "C2",
+        "optimizer": "momentum",
+        "lr": 0.025,
+        "mu": 0.5,
+        "precision": "float32"
+      },
+      {
+        "id": "C3",
+        "optimizer": "momentum",
+        "lr": 0.005,
+        "mu": 0.9,
+        "precision": "float32"
+      },
+      {
+        "id": "C4",
+        "optimizer": "momentum",
+        "lr": 0.0005,
+        "mu": 0.99,
+        "precision": "float32"
+      },
+      {
+        "id": "C5",
+        "optimizer": "adam",
+        "lr": 0.001,
+        "precision": "float32"
+      },
+      {
+        "id": "C6",
+        "optimizer": "reversible_momentum",
+        "lr": 0.005,
+        "mu_num": 9,
+        "mu_den": 10,
+        "precision": "float32"
+      }
+    ],
+    "ablations": {
+      "blocks": 2,
+      "configurations": [
+        {
+          "id": "A1",
+          "optimizer": "sgd",
+          "lr": 0.05,
+          "precision": "float64",
+          "role": "ablation"
+        },
+        {
+          "id": "A2",
+          "optimizer": "momentum",
+          "lr": 0.005,
+          "mu": 0.9,
+          "precision": "float64",
+          "role": "ablation"
+        },
+        {
+          "id": "A3",
+          "optimizer": "momentum",
+          "lr": 0.005,
+          "mu": 0.9,
+          "precision": "float32",
+          "checkpoint": true,
+          "role": "ablation"
+        },
+        {
+          "id": "C3",
+          "optimizer": "momentum",
+          "lr": 0.005,
+          "mu": 0.9,
+          "precision": "float32",
+          "role": "ablation_reference"
+        }
+      ]
+    },
+    "measurement": {
+      "warmup_seconds": 120,
+      "idle_seconds": 10,
+      "reference_windows": 3,
+      "reference_seconds": 3,
+      "window_seconds": 6,
+      "windows_per_cell": 2,
+      "validation": {
+        "probe_seconds": 3.0,
+        "idle_window_seconds": 2.0,
+        "idle_windows": 5,
+        "load_seconds": 5.0,
+        "min_plausible_w": 0.5,
+        "max_plausible_w": 400.0,
+        "min_load_response_w": 1.0
+      }
+    },
+    "stability": {
+      "max_reference_cv": 0.1,
+      "max_median_foreign_cores": 10.0
+    },
+    "accounting": {
+      "sample_every": 25,
+      "sample_elements": 2048,
+      "window": 0
+    },
+    "temperature": {
+      "kelvin": 298.15,
+      "uncertainty_k": 5.0,
+      "source": "DECLARED_REFERENCE"
+    },
+    "statistics": {
+      "bootstrap": 10000,
+      "seed": 20261117,
+      "equivalence_margin": 0.2,
+      "refute_r": 0.5,
+      "landauer_supported_log10": 6.0,
+      "landauer_refuted_log10": 3.0,
+      "conventions_supported_ratio": 100.0
+    },
+    "criterion": {
+      "statistic": "partial_r",
+      "op": "within",
+      "threshold": 0.2
+    },
+    "energy": {
+      "boundary": "CPU package energy (RAPL via the Windows Energy Meter Interface or Linux sysfs), excluding DRAM, storage, display, network and power conversion.",
+      "requires_measured": true
+    }
+  },
+  "preregistration_sha256": "56867144e8a3611588225dd86c0ff79235f349f1df589afe0ffacadd86dca591",
+  "git": {
+    "commit": "9ae9a24be20389d55ff3af640710c1767a06cd28",
+    "dirty": false
+  },
+  "environment": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+    "versions": {
+      "python": "3.14.6",
+      "numpy": "2.5.1",
+      "scipy": "1.18.0",
+      "torch": "2.14.0+cu130",
+      "sklearn": "1.9.1",
+      "threadpoolctl": "3.7.0",
+      "psutil": "7.2.2"
+    },
+    "executable": "<local path>"
+  },
+  "threads": 4,
+  "pinned_cpus": [
+    0,
+    1,
+    10,
+    11
+  ],
+  "priority": "high",
+  "hardware": {
+    "os_name": "Windows",
+    "os_version": "10.0.26300",
+    "machine": "AMD64",
+    "cpu_model": "Intel(R) Core(TM) Ultra 9 275HX",
+    "logical_cores": 24,
+    "physical_cores": 24,
+    "performance_cores": [
+      0,
+      1,
+      10,
+      11,
+      12,
+      13,
+      22,
+      23
+    ],
+    "ram_bytes": 33752997888,
+    "python_version": "3.14.6",
+    "library_versions": {
+      "torch": "2.14.0+cu130",
+      "numpy": "2.5.1",
+      "psutil": "7.2.2"
+    },
+    "torch_threads": 4,
+    "blas": "mkl",
+    "on_ac_power": true,
+    "extra": {
+      "power_plan": "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)"
+    }
+  },
+  "backend": {
+    "label": "DIRECT_CPU_ENERGY",
+    "source_tag": "measured_windows_emi_rapl_pkg",
+    "instrument": {
+      "source_tag": "measured_windows_emi_rapl_pkg",
+      "sensor": {
+        "name": "windows_emi_rapl_package0_pkg",
+        "source_tag": "measured_windows_emi_rapl_pkg",
+        "boundary": "CPU package RAPL domain; excludes DRAM, storage, network, discrete GPU, display and the power supply",
+        "units": "picowatt-hours",
+        "resolution_j": 3.6e-09,
+        "rollover": "64-bit accumulator; a backwards step raises TelemetryError",
+        "access": "readable without elevation on the tested machine",
+        "limitations": "RAPL is a model-assisted on-chip estimate. The OS refreshes the value on an irregular period. No external calibration here."
+      },
+      "valid": true,
+      "reasons": [],
+      "read_cost_s": 3.9667234835954385e-05,
+      "update_period_median_s": 0.007752800000162097,
+      "update_period_max_s": 0.00905619999684859,
+      "idle_w": 11.491024472577807,
+      "idle_sd_w": 2.273845411966181,
+      "load_w": 76.02338293687203,
+      "load_response_w": 64.53235846429422,
+      "sampler_overhead_w": 14.944538441498297,
+      "timer_resolution_s": 9.999348549172282e-08,
+      "foreign_cores_during_validation": 0.674023487341891
+    }
+  },
+  "measurement_finished_utc": "2026-11-17T09:17:08+00:00",
+  "raw_windows_sha256": "1b71898d038e5f771efb639a81bcc59ae224f8a1930be9222ad25da14fee7c61",
+  "accounting": {
+    "costs": {
+      "C1": {
+        "flops_per_update": 61127444,
+        "bytes_per_update": 3198192,
+        "parameters": 85002
+      },
+      "C2": {
+        "flops_per_update": 61297448,
+        "bytes_per_update": 3878208,
+        "parameters": 85002
+      },
+      "C3": {
+        "flops_per_update": 61297448,
+        "bytes_per_update": 3878208,
+        "parameters": 85002
+      },
+      "C4": {
+        "flops_per_update": 61297448,
+        "bytes_per_update": 3878208,
+        "parameters": 85002
+      },
+      "C5": {
+        "flops_per_update": 62062466,
+        "bytes_per_update": 4558224,
+        "parameters": 85002
+      },
+      "C6": {
+        "flops_per_update": 61722458,
+        "bytes_per_update": 6343266,
+        "parameters": 85002
+      },
+      "A1:float64": {
+        "flops_per_update": 61127444,
+        "bytes_per_update": 6395360,
+        "parameters": 85002
+      },
+      "A2:float64": {
+        "flops_per_update": 61297448,
+        "bytes_per_update": 7755392,
+        "parameters": 85002
+      },
+      "A3:float32": {
+        "flops_per_update": 83063080,
+        "bytes_per_update": 3169640,
+        "parameters": 85002
+      },
+      "C3:float32": {
+        "flops_per_update": 61297448,
+        "bytes_per_update": 3878208,
+        "parameters": 85002
+      }
+    },
+    "runs": [
+      "C1_float32_seed0.json",
+      "C1_float32_seed1.json",
+      "C1_float32_seed2.json",
+      "C1_float32_seed3.json",
+      "C1_float32_seed4.json",
+      "C2_float32_seed0.json",
+      "C2_float32_seed1.json",
+      "C2_float32_seed2.json",
+      "C2_float32_seed3.json",
+      "C2_float32_seed4.json",
+      "C3_float32_seed0.json",
+      "C3_float32_seed1.json",
+      "C3_float32_seed2.json",
+      "C3_float32_seed3.json",
+      "C3_float32_seed4.json",
+      "C4_float32_seed0.json",
+      "C4_float32_seed1.json",
+      "C4_float32_seed2.json",
+      "C4_float32_seed3.json",
+      "C4_float32_seed4.json",
+      "C5_float32_seed0.json",
+      "C5_float32_seed1.json",
+      "C5_float32_seed2.json",
+      "C5_float32_seed3.json",
+      "C5_float32_seed4.json",
+      "C6_float32_seed0.json",
+      "C6_float32_seed1.json",
+      "C6_float32_seed2.json",
+      "C6_float32_seed3.json",
+      "C6_float32_seed4.json",
+      "A1_float64_seed100.json",
+      "A1_float64_seed101.json",
+      "A2_float64_seed100.json",
+      "A2_float64_seed101.json",
+      "A3_float32_ckpt_seed100.json",
+      "A3_float32_ckpt_seed101.json",
+      "C3_float32_seed100.json",
+      "C3_float32_seed101.json"
+    ],
+    "secondary": [
+      {
+        "configuration": "C1",
+        "family": "sgd",
+        "M1": 9937536.0,
+        "M2": 351.5130859741878,
+        "M2_ci": [
+          130.607533095986,
+          631.8109630736141
+        ],
+        "accuracy": 0.9777777777777777
+      },
+      {
+        "configuration": "C2",
+        "family": "momentum_0.5",
+        "M1": 12657600.0,
+        "M2": 122294.11788360201,
+        "M2_ci": [
+          115906.24287672681,
+          128970.63269257196
+        ],
+        "accuracy": 0.975
+      },
+      {
+        "configuration": "C3",
+        "family": "momentum_0.9",
+        "M1": 12657600.0,
+        "M2": 47013.17455268396,
+        "M2_ci": [
+          43543.80512384382,
+          50684.0125820237
+        ],
+        "accuracy": 0.975
+      },
+      {
+        "configuration": "C4",
+        "family": "momentum_0.99",
+        "M1": 12657600.0,
+        "M2": 8561.173581978383,
+        "M2_ci": [
+          7021.365844542001,
+          10302.87502810756
+        ],
+        "accuracy": 0.9722222222222222
+      },
+      {
+        "configuration": "C5",
+        "family": "adam",
+        "M1": 15377664.0,
+        "M2": 58473.52214105862,
+        "M2_ci": [
+          53993.1737341674,
+          63301.512002621006
+        ],
+        "accuracy": 0.9916666666666667
+      },
+      {
+        "configuration": "C6",
+        "family": "reversible_momentum",
+        "M1": 18777744.0,
+        "M2": 0.0,
+        "M2_ci": [
+          0.0,
+          0.0
+        ],
+        "accuracy": 0.975
+      }
+    ]
+  },
+  "finished_utc": "2026-11-17T09:19:44+00:00"
+}

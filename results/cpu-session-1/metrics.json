@@ -1,0 +1,597 @@
+{
+  "schema_version": "1.0.0",
+  "experiment_id": "GAI-002",
+  "experiment_status": "EXECUTED_WITH_DIRECT_ENERGY",
+  "status": "COMPLETE",
+  "mode": "full",
+  "verdict": "ambiguous",
+  "verdict_note": null,
+  "criterion": {
+    "statistic": "partial_r",
+    "op": "within",
+    "threshold": 0.2
+  },
+  "test_statistic": {
+    "name": "partial_r",
+    "value": 0.45025096409190785,
+    "ci_low": -0.32000457707095453,
+    "ci_high": 0.645278901861832
+  },
+  "quantities": {
+    "construct": {
+      "value": 108601862330156.36,
+      "ci_low": 93843453248365.1,
+      "ci_high": 125496893669668.8,
+      "unit": "dimensionless (Landauer gap ratio, C3)"
+    },
+    "energy_joules": {
+      "value": 0.019563286358234677,
+      "ci_low": 0.018367387889697044,
+      "ci_high": 0.020759184826772314,
+      "unit": "J per update (C3)",
+      "source_tag": "measured_windows_emi_rapl_pkg"
+    },
+    "task_performance": {
+      "value": 0.83291015625,
+      "ci_low": null,
+      "ci_high": null,
+      "unit": "accuracy (C3)"
+    },
+    "wall_time_seconds": {
+      "value": 0.000467638465709281,
+      "ci_low": 0.0004629741039885055,
+      "ci_high": 0.000471812618695122,
+      "unit": "s per update (C3)"
+    },
+    "flops": {
+      "value": 61297448.0,
+      "ci_low": null,
+      "ci_high": null,
+      "unit": "FLOP per update (C3)"
+    },
+    "peak_memory_bytes": {
+      "value": 680016.0,
+      "ci_low": null,
+      "ci_high": null,
+      "unit": "B persistent state (C3)"
+    }
+  },
+  "energy": {
+    "source_tag": "measured_windows_emi_rapl_pkg",
+    "kind": "measured",
+    "boundary": "CPU package energy (RAPL via the Windows Energy Meter Interface or Linux sysfs), excluding DRAM, storage, display, network and power conversion.",
+    "sampling_interval_s": 0.007752800000162097,
+    "idle_baseline_w": 11.491024472577807,
+    "drift_w": null,
+    "uncertainty_j": null,
+    "measurement_backend": "DIRECT_CPU_ENERGY"
+  },
+  "environment": {
+    "device": "cpu",
+    "threads": 4,
+    "platform": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+    "versions": {
+      "python": "3.14.6",
+      "numpy": "2.5.1",
+      "scipy": "1.18.0",
+      "torch": "2.14.0+cu130",
+      "sklearn": "1.9.1",
+      "threadpoolctl": "3.7.0",
+      "psutil": "7.2.2"
+    },
+    "executable": "<local path>"
+  },
+  "replicates": 5,
+  "hardware": {
+    "os_name": "Windows",
+    "os_version": "10.0.26300",
+    "machine": "AMD64",
+    "cpu_model": "Intel(R) Core(TM) Ultra 9 275HX",
+    "logical_cores": 24,
+    "physical_cores": 24,
+    "performance_cores": [
+      0,
+      1,
+      10,
+      11,
+      12,
+      13,
+      22,
+      23
+    ],
+    "ram_bytes": 33752997888,
+    "python_version": "3.14.6",
+    "library_versions": {
+      "torch": "2.14.0+cu130",
+      "numpy": "2.5.1",
+      "psutil": "7.2.2"
+    },
+    "torch_threads": 4,
+    "blas": "mkl",
+    "on_ac_power": true,
+    "extra": {
+      "power_plan": "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)"
+    }
+  },
+  "measurement_backend": "DIRECT_CPU_ENERGY",
+  "energy_source_type": "DIRECT_CPU_ENERGY",
+  "energy_boundary": "CPU package energy (RAPL via the Windows Energy Meter Interface or Linux sysfs), excluding DRAM, storage, display, network and power conversion.",
+  "temperature_source": "DECLARED_REFERENCE",
+  "temperature_value": 298.15,
+  "temperature_uncertainty": 5.0,
+  "model_configuration": {
+    "sizes": [
+      64,
+      256,
+      256,
+      10
+    ],
+    "batch": 128,
+    "updates_per_run": 500
+  },
+  "training_steps": 500,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "session_quality": {
+    "valid": true,
+    "reasons": [],
+    "reference_cv": 0.03473318112554552,
+    "reference_metric": "energy_per_call_j",
+    "median_foreign_cores": 0.8820087336418092,
+    "reference_windows": 15
+  },
+  "configurations": {
+    "C1": {
+      "family": "sgd",
+      "blocks": 5,
+      "energy_per_update_j": [
+        0.01793749060503443,
+        0.017200548119678728,
+        0.01867443309039013
+      ],
+      "time_per_update_s": [
+        0.0004474046612962853,
+        0.00044504508089944635,
+        0.00045037737851849266
+      ],
+      "erasure_bits_per_update": [
+        1082.266186763086,
+        646.8661911810975,
+        1582.3199598834055
+      ],
+      "erasure_bits_per_parameter_update": 0.012732243791476505,
+      "write_bits_per_update": 9937536.0,
+      "upper_bound_bits_discarded_batch": 2028.6655561476496,
+      "flops_per_update": 61127444,
+      "bytes_per_update": 3198192,
+      "parameters": 85002,
+      "validation_accuracy": 0.8349609375,
+      "one_step_exact_fraction": 0.005630691042563704,
+      "full_reversal_exact_fraction": 0.0,
+      "full_reversal_all_exact": false,
+      "full_reversal_diverged_runs": 5,
+      "persistent_state_bytes": 340008,
+      "fixed_point_without_history_bits": null,
+      "landauer_bound_j": 3.0880025294483925e-18,
+      "landauer_gap_ratio": [
+        5808768106235518.0,
+        3746982491676563.5,
+        1.0290449157111534e+16
+      ]
+    },
+    "C2": {
+      "family": "momentum_0.5",
+      "blocks": 5,
+      "energy_per_update_j": [
+        0.02107168216369668,
+        0.018593514863609842,
+        0.02466471875428942
+      ],
+      "time_per_update_s": [
+        0.0004850189847621888,
+        0.00046382260760676104,
+        0.0005234937389876348
+      ],
+      "erasure_bits_per_update": [
+        123536.62030656594,
+        117105.31001977972,
+        130105.47027312331
+      ],
+      "erasure_bits_per_parameter_update": 1.453337807422954,
+      "write_bits_per_update": 12657600.0,
+      "upper_bound_bits_discarded_batch": 124483.01967595049,
+      "flops_per_update": 61297448,
+      "bytes_per_update": 3878208,
+      "parameters": 85002,
+      "validation_accuracy": 0.8298828125,
+      "one_step_exact_fraction": 0.6236570904214019,
+      "full_reversal_exact_fraction": 0.0,
+      "full_reversal_all_exact": false,
+      "full_reversal_diverged_runs": 5,
+      "persistent_state_bytes": 680016,
+      "fixed_point_without_history_bits": null,
+      "landauer_bound_j": 3.5248389042546113e-16,
+      "landauer_gap_ratio": [
+        59780553767329.27,
+        49260591479673.86,
+        75075967437254.58
+      ]
+    },
+    "C3": {
+      "family": "momentum_0.9",
+      "blocks": 5,
+      "energy_per_update_j": [
+        0.019563286358234677,
+        0.018367387889697044,
+        0.020759184826772314
+      ],
+      "time_per_update_s": [
+        0.000467638465709281,
+        0.0004629741039885055,
+        0.000471812618695122
+      ],
+      "erasure_bits_per_update": [
+        63133.66214925259,
+        58962.87850643897,
+        67464.77881299911
+      ],
+      "erasure_bits_per_parameter_update": 0.7427314904267263,
+      "write_bits_per_update": 12657600.0,
+      "upper_bound_bits_discarded_batch": 64080.06151863715,
+      "flops_per_update": 61297448,
+      "bytes_per_update": 3878208,
+      "parameters": 85002,
+      "validation_accuracy": 0.83291015625,
+      "one_step_exact_fraction": 0.7708056281028682,
+      "full_reversal_exact_fraction": 0.0,
+      "full_reversal_all_exact": false,
+      "full_reversal_diverged_runs": 5,
+      "persistent_state_bytes": 680016,
+      "fixed_point_without_history_bits": null,
+      "landauer_bound_j": 1.8013766926722748e-16,
+      "landauer_gap_ratio": [
+        108601862330156.36,
+        93843453248365.1,
+        125496893669668.8
+      ]
+    },
+    "C4": {
+      "family": "momentum_0.99",
+      "blocks": 5,
+      "energy_per_update_j": [
+        0.019838271157734802,
+        0.018815928030845603,
+        0.020842157922030955
+      ],
+      "time_per_update_s": [
+        0.00047022105762617206,
+        0.00045988114754986695,
+        0.00048304652247967313
+      ],
+      "erasure_bits_per_update": [
+        16933.04088758901,
+        14801.54922984997,
+        19206.703362138138
+      ],
+      "erasure_bits_per_parameter_update": 0.1992075584996707,
+      "write_bits_per_update": 12657600.0,
+      "upper_bound_bits_discarded_batch": 17879.440256973576,
+      "flops_per_update": 61297448,
+      "bytes_per_update": 3878208,
+      "parameters": 85002,
+      "validation_accuracy": 0.83291015625,
+      "one_step_exact_fraction": 0.9410842097832992,
+      "full_reversal_exact_fraction": 0.027406413966730197,
+      "full_reversal_all_exact": false,
+      "full_reversal_diverged_runs": 0,
+      "persistent_state_bytes": 680016,
+      "fixed_point_without_history_bits": null,
+      "landauer_bound_j": 4.8314614030877343e-17,
+      "landauer_gap_ratio": [
+        410606015501984.1,
+        337680901052812.6,
+        501922732906308.44
+      ]
+    },
+    "C5": {
+      "family": "adam",
+      "blocks": 5,
+      "energy_per_update_j": [
+        0.022012605961307902,
+        0.02037890351321992,
+        0.023444489450789842
+      ],
+      "time_per_update_s": [
+        0.0005751150919048669,
+        0.0005688605004762713,
+        0.0005803377809524786
+      ],
+      "erasure_bits_per_update": [
+        65146.10272358538,
+        60316.53222255432,
+        70210.14276122456
+      ],
+      "erasure_bits_per_parameter_update": 0.7664067048255968,
+      "write_bits_per_update": 15377664.0,
+      "upper_bound_bits_discarded_batch": 66092.50209296994,
+      "flops_per_update": 62062466,
+      "bytes_per_update": 4558224,
+      "parameters": 85002,
+      "validation_accuracy": 0.8376953125,
+      "one_step_exact_fraction": 0.8106072013991827,
+      "full_reversal_exact_fraction": 0.0,
+      "full_reversal_all_exact": false,
+      "full_reversal_diverged_runs": 5,
+      "persistent_state_bytes": 1020024,
+      "fixed_point_without_history_bits": null,
+      "landauer_bound_j": 1.858797146715016e-16,
+      "landauer_gap_ratio": [
+        118423928077412.7,
+        100049435059944.88,
+        138549758345746.03
+      ]
+    },
+    "C6": {
+      "family": "reversible_momentum",
+      "blocks": 5,
+      "energy_per_update_j": [
+        0.03278859031341703,
+        0.029054711591284043,
+        0.039150604339861075
+      ],
+      "time_per_update_s": [
+        0.0008564980259999373,
+        0.000828034458666516,
+        0.000906913143333385
+      ],
+      "erasure_bits_per_update": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "erasure_bits_per_parameter_update": 0.0,
+      "write_bits_per_update": 18777744.0,
+      "upper_bound_bits_discarded_batch": 946.3993693845634,
+      "flops_per_update": 61722458,
+      "bytes_per_update": 6343266,
+      "parameters": 85002,
+      "validation_accuracy": 0.83291015625,
+      "one_step_exact_fraction": null,
+      "full_reversal_exact_fraction": 1.0,
+      "full_reversal_all_exact": true,
+      "full_reversal_diverged_runs": 0,
+      "persistent_state_bytes": 43861032,
+      "fixed_point_without_history_bits": 16962.2,
+      "landauer_bound_j": 0.0,
+      "landauer_gap_ratio": null
+    }
+  },
+  "partial_correlation": 0.45025096409190785,
+  "partial_correlation_ci": [
+    -0.32000457707095453,
+    0.645278901861832
+  ],
+  "hypothesis_verdicts": {
+    "H2": "AMBIGUOUS",
+    "H2b": "REPORTED",
+    "H3": "SUPPORTED",
+    "H4": "SUPPORTED",
+    "H5": "SUPPORTED",
+    "H6": "SUPPORTED"
+  },
+  "hypotheses": {
+    "H2": {
+      "statistic": "partial_r(E, N | B, F, T)",
+      "value": 0.45025096409190785,
+      "ci": [
+        -0.32000457707095453,
+        0.645278901861832
+      ],
+      "n_cells": 30,
+      "vif_erasure": 1.327471121522404,
+      "decision": "AMBIGUOUS",
+      "rule": "SUPPORTED if the 95% interval lies inside (-0.2, 0.2); REFUTED if |r| >= 0.5 with the interval beyond the margin; else AMBIGUOUS"
+    },
+    "H2b": {
+      "statistic": "within-block slope of energy per update on erased bits, momentum family (C2-C4)",
+      "slope_j_per_bit": 1.2451383844158595e-08,
+      "ci": [
+        -1.2452353456117145e-08,
+        4.2588779808600036e-08
+      ],
+      "upper_bound_j_per_bit": 4.2588779808600036e-08,
+      "bound_over_kt_ln2": 14926281919393.285,
+      "decision": "REPORTED"
+    },
+    "predictive": {
+      "loco_mape_percent": {
+        "bytes": 9.290678253710798,
+        "flops": 27.170419419795362,
+        "time": 7.113251750944559,
+        "bytes+flops+time": 91.00214378510086,
+        "bytes+flops+time+erasure": 98.11146821373815
+      }
+    },
+    "H3": {
+      "ratios": {
+        "C1": {
+          "M1_over_M2": 9182.155112617764,
+          "M3_minus_M2_bits": 946.3993693845637
+        },
+        "C2": {
+          "M1_over_M2": 102.46030665716093,
+          "M3_minus_M2_bits": 946.399369384555
+        },
+        "C3": {
+          "M1_over_M2": 200.488924119062,
+          "M3_minus_M2_bits": 946.3993693845623
+        },
+        "C4": {
+          "M1_over_M2": 747.5089727845237,
+          "M3_minus_M2_bits": 946.399369384566
+        },
+        "C5": {
+          "M1_over_M2": 236.0488710314316,
+          "M3_minus_M2_bits": 946.399369384555
+        },
+        "C6": {
+          "M1_over_M2": Infinity,
+          "M3_minus_M2_bits": 946.3993693845634
+        }
+      },
+      "min_M1_over_M2": 102.46030665716093,
+      "decision": "SUPPORTED",
+      "rule": "SUPPORTED if, for every configuration, the overwrite count exceeds the retained-information estimate by at least 100x"
+    },
+    "H4": {
+      "exact_reversal_all_seeds": true,
+      "extra_persistent_bytes": 43181016,
+      "time_difference_s": [
+        0.0003888595602906563,
+        0.00036094450095727656,
+        0.000438721524489944
+      ],
+      "erasure_C6_bits": 0.0,
+      "erasure_C3_bits": 63133.66214925259,
+      "energy_difference_j": [
+        0.013225303955182344,
+        0.009879661448602979,
+        0.018801923075894757
+      ],
+      "decision": "SUPPORTED",
+      "rule": "SUPPORTED if C6 reverses exactly in every seed, keeps more state than C3, and costs more energy per update (95% interval of the paired difference above zero); REFUTED if reversal fails or C6 costs less; else AMBIGUOUS"
+    },
+    "H5": {
+      "log10_gap": {
+        "C1": 15.764084039207763,
+        "C2": 13.776559933737412,
+        "C3": 14.035837272700117,
+        "C4": 14.613425307626343,
+        "C5": 14.07343946237047
+      },
+      "log10_gap_low": {
+        "C1": 15.573681663794085,
+        "C2": 13.692499622176578,
+        "C3": 13.972403980555852,
+        "C4": 14.528506498000125,
+        "C5": 14.00021464068796
+      },
+      "log10_gap_high": {
+        "C1": 16.012434331244247,
+        "C2": 13.875500937274005,
+        "C3": 14.098632976185042,
+        "C4": 14.700636866039074,
+        "C5": 14.14160577263575
+      },
+      "spread_decades": 1.9875241054703512,
+      "undefined_for": [
+        "C6"
+      ],
+      "decision": "SUPPORTED",
+      "rule": "SUPPORTED if log10 of the lower 95% bound of the gap ratio is at least 6 for every configuration with erasure; REFUTED if any upper bound is below 3; else AMBIGUOUS"
+    },
+    "H6": {
+      "checks": [
+        {
+          "check": "a write count is never turned into a Landauer bound",
+          "passed": true
+        },
+        {
+          "check": "no Landauer bound without a bath temperature",
+          "passed": true
+        },
+        {
+          "check": "a CPU die sensor is refused as the bath temperature",
+          "passed": true
+        },
+        {
+          "check": "no gap ratio from proxy energy",
+          "passed": true
+        },
+        {
+          "check": "no gap ratio when nothing is erased",
+          "passed": true
+        },
+        {
+          "check": "the proxy backend never labels itself as measured",
+          "passed": true
+        },
+        {
+          "check": "a proxy window cannot carry joules",
+          "passed": true
+        },
+        {
+          "check": "an unknown energy label is refused",
+          "passed": true
+        }
+      ],
+      "decision": "SUPPORTED"
+    }
+  },
+  "ablations": {
+    "A1:float64": {
+      "energy_per_update_j": 0.03306811053921976,
+      "time_per_update_s": 0.0007196339357844551,
+      "erasure_bits_per_update": 1258.7307317847158,
+      "write_bits_per_update": 19875072.0,
+      "validation_accuracy": 0.830810546875
+    },
+    "A2:float64": {
+      "energy_per_update_j": 0.03310202543204023,
+      "time_per_update_s": 0.0007993122472670924,
+      "erasure_bits_per_update": 62674.223586506596,
+      "write_bits_per_update": 25315200.0,
+      "validation_accuracy": 0.8330078125
+    },
+    "A3:float32:ckpt": {
+      "energy_per_update_j": 0.025487860627849027,
+      "time_per_update_s": 0.0006401316367461486,
+      "erasure_bits_per_update": 63060.47712070026,
+      "write_bits_per_update": 8463296.0,
+      "validation_accuracy": 0.832763671875
+    },
+    "C3:float32": {
+      "energy_per_update_j": 0.019653347072911692,
+      "time_per_update_s": 0.0004904215023672103,
+      "erasure_bits_per_update": 63060.47712070026,
+      "write_bits_per_update": 12657600.0,
+      "validation_accuracy": 0.832763671875
+    }
+  },
+  "kT_ln2_j": 2.8532745152874053e-21,
+  "limitations": [
+    "One laptop, one operating system, CPU package energy only (RAPL through Windows EMI); DRAM and wall power not measured.",
+    "Erasure is counted for the persistent logical state under a declared model (data set and batch schedule retained, locally uniform prior over representable values); other conventions give other numbers (H3).",
+    "SGD's per-element estimate treats the gradient increment as side information; its global inverse is approximate.",
+    "The bath temperature is a declared reference (298.15 K +- 5 K), not a measurement.",
+    "Bytes moved and FLOPs are analytic estimates from tensor shapes, not hardware counters."
+  ],
+  "provenance": {
+    "git": {
+      "commit": "9ae9a24be20389d55ff3af640710c1767a06cd28",
+      "dirty": false
+    },
+    "preregistration_sha256": "56867144e8a3611588225dd86c0ff79235f349f1df589afe0ffacadd86dca591",
+    "raw_windows_sha256": "1b71898d038e5f771efb639a81bcc59ae224f8a1930be9222ad25da14fee7c61",
+    "started_utc": "2026-11-17T09:04:11+00:00",
+    "finished_utc": "2026-11-17T09:19:44+00:00"
+  },
+  "execution_timestamp": "2026-11-17T09:19:44+00:00",
+  "git_commit": "9ae9a24be20389d55ff3af640710c1767a06cd28",
+  "figures": [
+    "GAI-002_fig1_accounting-conventions",
+    "GAI-002_fig2_erasure-per-parameter",
+    "GAI-002_fig3_energy-vs-bound",
+    "GAI-002_fig4_gap-ratio",
+    "GAI-002_fig5_energy-vs-erasure-same-compute",
+    "GAI-002_fig6_predictors",
+    "GAI-002_fig7_reversibility-cost"
+  ]
+}
